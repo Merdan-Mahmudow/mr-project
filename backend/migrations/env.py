@@ -6,7 +6,14 @@ from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
 from alembic import context
-from app.models import user
+
+from core.base import Base
+
+from app.models.user import *
+from app.models.order import *
+from app.models.product import *
+from app.models.review import *
+
 from core.env import Environment
 from core.settings import Settings
 # this is the Alembic Config object, which provides
@@ -29,7 +36,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = user.Base.metadata
+target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
